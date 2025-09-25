@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-html,
+/* html,
 body,
 #root,
 .app {
@@ -14,4 +14,4 @@ body,
   @apply text-sm;
   @apply bg-white;
   @apply dark:bg-black;
-}
+} */
