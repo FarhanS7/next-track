@@ -1,11 +1,14 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* html,
+html,
 body,
 #root,
 .app {
@@ -14,4 +17,4 @@ body,
   @apply text-sm;
   @apply bg-white;
   @apply dark:bg-black;
-} */
+}
