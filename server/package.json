@@ -6,8 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf dist && npx tsc",
     "start": "npm run build && node dist/index.js",
-    "dev": "npm run build && concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\"",
-    "seed": "node --loader ts-node/esm prisma/seed.ts"
+    "dev": "concurrently \"tsc -w\" \"nodemon --watch src --ext ts,js,json --exec tsx src/index.ts\"",
+    "seed": "tsx prisma/seed.ts"
   },
   "type": "module",
   "keywords": [],
@@ -15,12 +15,25 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/morgan": "^1.9.10",
     "@types/node": "^24.7.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   },
   "dependencies": {
     "@prisma/client": "^6.16.3",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.1",
     "prisma": "^6.16.3"
   }
 }

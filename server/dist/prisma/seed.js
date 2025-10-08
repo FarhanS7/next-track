@@ -1,7 +1,10 @@
 import { PrismaClient } from "@prisma/client";
+import { fileURLToPath } from "url";
 import fs from "fs";
 import path from "path";
 const prisma = new PrismaClient();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 async function deleteAllData(orderedFileNames) {
     const modelNames = orderedFileNames.map((fileName) => {
         const modelName = path.basename(fileName, path.extname(fileName));
