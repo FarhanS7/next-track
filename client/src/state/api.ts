@@ -59,11 +59,25 @@ export interface Task {
   attachments?: Attachment[];
 }
 
+export interface Team {
+  id: number;
+  name: string;
+  members?: User[];
+}
+
+export interface SearchResults {
+  projects?: Project[];
+  tasks?: Task[];
+  users?: User[];
+  teams?: Team[];
+}
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
   }),
   reducerPath: "api",
+  tagTypes: ["Projects", "Tasks", "Users", "Teams"],
   endpoints: (build) => ({
     getProjects: build.query<Project[], void>({
       query: () => "projects",
