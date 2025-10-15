@@ -1,3 +1,5 @@
+"use client";
+
 import Modal from "@/components/Modal/page";
 import { useCreateProjectMutation } from "@/state/api";
 import { formatISO } from "date-fns";
@@ -31,19 +33,20 @@ const ModalNewProject = ({ isOpen, onClose }: Props) => {
       startDate: formattedStartDate,
       endDate: formattedEndDate,
     });
+    onClose();
   };
 
   const isFormValid = () => {
-    return projectName && description && startDate && endDate;
+    return !!projectName && !!description && !!startDate && !!endDate;
   };
 
   const inputStyles =
-    "w-full rounded border border-gray-300 p-2 shadow-sm dark:border-dark-tertiary dark:bg-dark-tertiary dark:text-white dark:focus:outline-none";
+    "mb-4 w-full rounded border border-gray-300 p-2 shadow-sm transition-colors focus:outline-none focus:ring-1 dark:border-dark-tertiary dark:bg-dark-tertiary dark:text-white dark:focus:ring-blue-400";
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} name="Create New Project">
       <form
-        className="mt-4 space-y-6"
+        className="mt-4 space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
           handleSubmit();
@@ -62,7 +65,7 @@ const ModalNewProject = ({ isOpen, onClose }: Props) => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-2">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <input
             type="date"
             className={inputStyles}
@@ -78,10 +81,10 @@ const ModalNewProject = ({ isOpen, onClose }: Props) => {
         </div>
         <button
           type="submit"
-          className={`focus-offset-2 bg-blue-primary mt-4 flex w-full justify-center rounded-md border border-transparent px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none ${
+          disabled={!isFormValid() || isLoading}
+          className={`bg-blue-primary mt-4 w-full rounded-md px-4 py-2 text-white shadow-sm transition-colors hover:bg-blue-600 focus:ring-2 focus:ring-blue-600 focus:outline-none ${
             !isFormValid() || isLoading ? "cursor-not-allowed opacity-50" : ""
           }`}
-          disabled={!isFormValid() || isLoading}
         >
           {isLoading ? "Creating..." : "Create Project"}
         </button>
