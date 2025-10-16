@@ -5,8 +5,9 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import projectRoutes from "./routes/projectRoutes.js";
+import searchRoutes from "./routes/searchRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
-
+import userRoutes from "./routes/userRoutes.js";
 // Configure
 dotenv.config();
 const app = express();
@@ -25,6 +26,8 @@ app.get("/", (req, res) => {
 
 app.use("/projects", projectRoutes);
 app.use("/tasks", taskRoutes);
+app.use("/search", searchRoutes);
+app.use("/users", userRoutes);
 
 // Server
 const port = process.env.PORT || 5000;
