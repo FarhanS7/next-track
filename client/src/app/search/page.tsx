@@ -1,7 +1,9 @@
 "use client";
 
 import Header from "@/components/Header/page";
+import ProjectCard from "@/components/ProjectCard/page";
 import TaskCard from "@/components/TaskCard/page";
+import UserCard from "@/components/UserCard/page";
 import { useSearchQuery } from "@/state/api";
 import { debounce } from "lodash";
 import React, { useEffect, useState } from "react";
@@ -53,6 +55,16 @@ const Search = () => {
             {searchResults.projects && searchResults.projects?.length > 0 && (
               <h2>Projects</h2>
             )}
+            {searchResults.projects?.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+
+            {searchResults.users && searchResults.users?.length > 0 && (
+              <h2>Users</h2>
+            )}
+            {searchResults.users?.map((user) => (
+              <UserCard key={user.userId} user={user} />
+            ))}
           </div>
         )}
       </div>

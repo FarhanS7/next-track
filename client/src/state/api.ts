@@ -16,7 +16,7 @@ export enum Priority {
 }
 
 export enum Status {
-  ToDO = "To Do",
+  ToDo = "To Do",
   WorkInProgress = "Work In Progress",
   UnderReview = "Under Review",
   Completed = "Completed",
@@ -143,4 +143,7 @@ export const {
   useGetTasksByUserQuery,
   useCreateTaskMutation,
   useUpdateTaskStatusMutation,
+  useGetUsersQuery,
+  useGetTeamsQuery,
+  useSearchQuery,
 } = api;
