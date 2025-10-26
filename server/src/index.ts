@@ -35,6 +35,22 @@ app.use("/teams", teamRoutes);
 
 console.log("DATABASE_URL in app:", process.env.DATABASE_URL);
 
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
+
+async function testDb() {
+  try {
+    const projects = await prisma.project.findMany();
+    console.log("DB connected! Projects:", projects);
+  } catch (err) {
+    console.error("DB connection failed:", err);
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
+testDb();
+
 // Server
 const port = Number(process.env.PORT) || 5000;
 app.listen(port, "0.0.0.0", () => {
