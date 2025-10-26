@@ -31,6 +31,8 @@ app.use("/search", searchRoutes);
 app.use("/users", userRoutes);
 app.use("/teams", teamRoutes);
 
+console.log("DATABASE_URL in app:", process.env.DATABASE_URL);
+
 // Server
 const port = Number(process.env.PORT) || 5000;
 app.listen(port, "0.0.0.0", () => {
