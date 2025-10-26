@@ -1,3 +1,4 @@
+console.log("DATABASE_URL before PrismaClient:", process.env.DATABASE_URL);
 import { PrismaClient } from "@prisma/client";
 import type { Request, Response } from "express";
 
