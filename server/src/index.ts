@@ -1,3 +1,4 @@
+dotenv.config();
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -10,7 +11,7 @@ import taskRoutes from "./routes/taskRoutes.js";
 import teamRoutes from "./routes/teamRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 // Configure
-dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(helmet());
